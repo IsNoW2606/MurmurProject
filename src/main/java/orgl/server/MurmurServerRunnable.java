@@ -21,17 +21,17 @@ public class MurmurServerRunnable extends Thread {
     private final ServerData data = new ServerData();
     private final ServerConfig config = new ServerConfig();
     private final Map<String, ClientApplicationThread> clientList = Collections.synchronizedMap(new HashMap<>());
-    private final MurmurExecutor executor;
+    private MurmurExecutor executor;
     private final RequestSaver requestSaver;
 
     public MurmurServerRunnable() {
-        this.executor = new MurmurExecutor(this, 250);
         this.requestSaver = new JsonRepository().loadRequestSaver("server");
     }
 
     @Override
     public void run() {
         try {
+            this.executor = new MurmurExecutor(this, 250);
             new RelaySocketReceiver(this).start();
 
             SSLConnection.setKeyStore();
@@ -76,8 +76,13 @@ public class MurmurServerRunnable extends Thread {
 
     public void senderFollowReceiver(String sender, String receiver) {
         if (receiver.charAt(0) == '#') {
-            User senderUser = data.users.get(Domain.removeDomain(sender));
-            senderUser.registerUserTag(receiver);
+            if (config.currentDomain.inDomain(sender)) {
+                User senderUser = data.users.get(Domain.removeDomain(sender));
+                senderUser.registerUserTag(receiver);
+            } else {
+                String followRequest = String.format("FOLLOW %s", sender);
+                sendRequestToExecutor(new Request(receiver, followRequest));
+            }
 
             String tagName = Domain.removeDomain(receiver);
             Tag tag = data.tags.get(tagName);
@@ -90,6 +95,9 @@ public class MurmurServerRunnable extends Thread {
 
             new JsonRepository().save(this);
             System.out.printf("Server -> Client %s now follow the tag %s\n", sender, receiver);
+        } else if (sender.charAt(0) == '#') {
+            User receiverUser = data.users.get(Domain.removeDomain(receiver));
+            receiverUser.registerUserTag(sender);
         } else {
             User receiverUser = data.users.get(Domain.removeDomain(receiver));
 

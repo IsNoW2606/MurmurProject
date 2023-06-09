@@ -2,7 +2,7 @@
   "serverConfig": {
     "currentDomain": {
       "host": "server2.godswila.guru",
-      "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI="
+      "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI\u003d"
     },
     "multicastData": {
       "multicastAddress": "224.1.1.255",
@@ -15,6 +15,19 @@
     "tls": false
   },
   "serverData": {
-    "users": []
+    "users": [
+      {
+        "login": "isnow",
+        "cryptData": {
+          "bcryptHash": "oGC805z9mCg.pGVPBDN2pCB4hXHTHAq",
+          "bcryptRound": 14,
+          "bcryptSalt": "8z0vblugHLTSNxbj1xzjIu"
+        },
+        "followers": [],
+        "userTags": [],
+        "lockoutCounter": 0
+      }
+    ],
+    "tags": []
   }
 }

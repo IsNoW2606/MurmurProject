@@ -50,9 +50,9 @@ public class ClientAuthentificationThread extends ClientThread {
 
         TaskType taskType = TaskType.fromRequestString(request.getRequestString());
         switch (taskType) {
-            case REGISTER -> handleRegistration(request);
-            case CONNECT -> handleConnection(request);
-            case CONFIRM -> handleConfirmation(request);
+            case REGISTER : handleRegistration(request); break;
+            case CONNECT : handleConnection(request); break;
+            case CONFIRM : handleConfirmation(request); break;
         }
     }
 

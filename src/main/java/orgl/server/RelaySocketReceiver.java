@@ -63,8 +63,8 @@ public class RelaySocketReceiver extends Thread {
 
         TaskType taskType = TaskType.fromRequestString(request.getRequestString());
         switch (taskType) {
-            case SEND -> handleSend(request);
-            case ACK -> handleAck(request);
+            case SEND : handleSend(request); break;
+            case ACK : handleAck(request); break;
         }
     }
 

@@ -27,9 +27,9 @@ public class TaskBuilder {
 
         TaskType taskType = TaskType.fromRequestString(request.getRequestString());
         switch (taskType) {
-            case MSG -> makeMsgsTask(request);
-            case FOLLOW -> makeFollowTask(request) ;
-            case SEND -> makeFromSendTask(request) ;
+            case MSG : makeMsgsTask(request); break;
+            case FOLLOW : makeFollowTask(request); break;
+            case SEND : makeFromSendTask(request); break;
         }
 
         return result;

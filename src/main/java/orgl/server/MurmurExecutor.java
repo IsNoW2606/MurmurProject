@@ -39,9 +39,9 @@ public class MurmurExecutor extends Thread {
 
     private void executeTask(Task task) {
         switch (task.getType()) {
-            case MSGS -> handleMsgs(task);
-            case FOLLOW -> handleFollow(task);
-            case SEND -> handleSend(task);
+            case MSGS : handleMsgs(task); break;
+            case FOLLOW : handleFollow(task); break;
+            case SEND : handleSend(task); break;
         }
     }
 

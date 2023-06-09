@@ -11,24 +11,23 @@ import java.net.*;
 public class MulticastReceiver extends Thread {
     private MulticastSocket socket = null;
     private final byte[] buf = new byte[256];
-    private final Relay relay;
+    private final Relay controller;
 
-    public MulticastReceiver(Relay relay) {
-        this.relay = relay;
+    public MulticastReceiver(Relay controller) {
+        this.controller = controller;
     }
 
     public void run() {
-        RelayConfig relayConfig = relay.getConfig();
-
         try {
-            connectToMulticastAndHandleConnection(relayConfig.multicastData);
+            connectToMulticastAndHandleConnection(controller.getConfig().multicastData);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("[MulticastError] Refer to the ReadMe file to setup your NetworkInterface, Port and MulticastAddress properly");
         }
     }
 
     private void connectToMulticastAndHandleConnection(MulticastData multicastData) throws IOException {
-        socket = new MulticastSocket(23303);
+        socket = new MulticastSocket(multicastData.multicastPort);
         joinAddressReceivePacketAndLeave(new InetSocketAddress(InetAddress.getByName(multicastData.multicastAddress), multicastData.multicastPort), NetworkInterface.getByName(multicastData.networkInterface));
         socket.close();
     }
@@ -49,9 +48,9 @@ public class MulticastReceiver extends Thread {
         sendToController(packet.getAddress(), new String(packet.getData(), 0, packet.getLength()));
     }
 
-    private void sendToController(InetAddress address, String requestString) {
-        System.out.printf("Server multicast in -> \"%s\" has been received from %s\n", requestString, address.getHostAddress());
-        relay.handleRequest(new Request(address.getHostAddress(), requestString));
+    private void sendToController(InetAddress address, String message) {
+        System.out.printf("Server multicast in -> \"%s\" has been received from %s\n", message, address.getHostAddress());
+        controller.handleRequest(new Request(address.getHostAddress(), message));
     }
 
     private DatagramPacket receivePacket() throws IOException {

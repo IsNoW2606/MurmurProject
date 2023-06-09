@@ -1,16 +1,16 @@
 {
   "serverConfig": {
     "currentDomain": {
-      "host": "server1.godswila.guru",
+      "host": "server2.godswila.guru",
       "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI="
     },
     "multicastData": {
       "multicastAddress": "224.1.1.255",
-      "multicastPort": 23303,
-      "networkInterface": "lo"
+      "multicastPort": 23305,
+      "networkInterface": "eth7"
     },
     "unicastPort": 23303,
-    "relayPort": 23304,
+    "relayPort": 23309,
     "saltSizeInBytes": 0,
     "tls": false
   },

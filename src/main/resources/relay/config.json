@@ -2,14 +2,14 @@
   "relayConfig": {
     "multicastData": {
       "multicastAddress": "224.1.1.255",
-      "multicastPort": 23303,
-      "networkInterface": "lo"
+      "multicastPort": 23305,
+      "networkInterface": "eth7"
     }
   },
   "relayData": {
     "configuredDomains": [
       {
-        "host": "server1.godswila.guru",
+        "host": "server2.godswila.guru",
         "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI\u003d"
       }
     ]

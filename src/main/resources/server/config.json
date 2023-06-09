@@ -1,13 +1,13 @@
 {
   "serverConfig": {
     "currentDomain": {
-      "host": "server2.godswila.guru",
-      "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI\u003d"
+      "host": "server1.godswila.guru",
+      "base64AES": "UEOAvGGKEEbworNACMFyY5/UeM2o7+vCyOQ/sQcyfTw\u003d"
     },
     "multicastData": {
       "multicastAddress": "224.1.1.255",
       "multicastPort": 23305,
-      "networkInterface": "eth7"
+      "networkInterface": "eth2"
     },
     "unicastPort": 23303,
     "relayPort": 23309,
@@ -17,14 +17,16 @@
   "serverData": {
     "users": [
       {
-        "login": "isnow",
+        "login": "anath4n",
         "cryptData": {
-          "bcryptHash": "oGC805z9mCg.pGVPBDN2pCB4hXHTHAq",
+          "bcryptHash": "bDiIx/9H3LvswZTTaqRcffIV6z2.U7u",
           "bcryptRound": 14,
-          "bcryptSalt": "8z0vblugHLTSNxbj1xzjIu"
+          "bcryptSalt": "bfIqQ4VVU9pQgI9pZO7H3u"
         },
         "followers": [],
-        "userTags": [],
+        "userTags": [
+          "#helmo@server2.godswila.guru"
+        ],
         "lockoutCounter": 0
       }
     ],

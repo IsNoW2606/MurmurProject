@@ -5,7 +5,6 @@ import orgl.model.Domain;
 import orgl.model.Tag;
 import orgl.model.User;
 import orgl.server.ServerData;
-import orgl.utility.StringUtils;
 import orgl.utility.TagsFinder;
 
 import java.util.*;
@@ -52,6 +51,7 @@ public class TaskBuilder {
                 if (domain.inDomain(tagDomain)) {
                     Tag tag = serverData.tags.get(tagName);
                     receivers.addAll(tag.getFollowers());
+                    receivers.remove(request.getSender());
                 } else {
                     receivers.add(tagDomain);
                 }

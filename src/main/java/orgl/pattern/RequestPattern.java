@@ -16,9 +16,9 @@ public class RequestPattern {
     public static Pattern MSGS = Pattern.compile(
             String.format("MSGS %s %s", WordPattern.NOM_DOMAINE, WordPattern.MESSAGE));
     public static Pattern SEND = Pattern.compile(
-            String.format("SEND %s %s (%s|%s) (%s|%s)", WordPattern.ID_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE, FOLLOW.pattern(), MSGS.pattern()));
+            String.format("SEND %s (%s|%s) (%s|%s) (%s|%s)", WordPattern.ID_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE, FOLLOW.pattern(), MSGS.pattern()));
     public static Pattern CRYPTED_SEND = Pattern.compile(
-            String.format("SEND %s %s (%s|%s) .+", WordPattern.ID_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE));
+            String.format("SEND %s (%s|%s) (%s|%s) .+", WordPattern.ID_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE, WordPattern.NOM_DOMAINE, WordPattern.TAG_DOMAINE));
     public static Pattern CR = Pattern.compile(
             String.format("CR %s %s", WordPattern.DOMAINE, WordPattern.PORT));
     public static Pattern ACK = Pattern.compile(

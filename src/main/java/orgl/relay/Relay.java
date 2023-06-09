@@ -62,7 +62,7 @@ public class Relay extends Thread {
             String newRequestString = sendRequestWithoutContent + " " + newCryptedContent;
             sendRequestToReceiver(receiverDomain, newRequestString);
 
-            saveRequest(request.getSender(), newRequestString);
+            saveRequest(receiverDomain, newRequestString);
         }
     }
 
@@ -83,7 +83,8 @@ public class Relay extends Thread {
 
 
     public void handleAck(Request request) {
-        removeRequest(request.getSender(), request.getLastParam(2));
+        String receiverDomain = Domain.getDomain(request.getParam(5));
+        removeRequest(receiverDomain, request.getLastParam(2));
     }
 
     public void handleCr(Request request) {
@@ -93,7 +94,7 @@ public class Relay extends Thread {
         servers.put(domain, new RelaySocketSender(request.getSender(), port));
         System.out.printf("Relay -> Connection with %s has been made\n", domain);
 
-        sendSavedRequest(request.getSender());
+        sendSavedRequest(domain);
     }
 
     public void saveRequest(String receiver, String requestString) {

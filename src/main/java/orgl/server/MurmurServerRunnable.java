@@ -98,6 +98,9 @@ public class MurmurServerRunnable extends Thread {
         } else if (sender.charAt(0) == '#') {
             User receiverUser = data.users.get(Domain.removeDomain(receiver));
             receiverUser.registerUserTag(sender);
+
+            new JsonRepository().save(this);
+            System.out.printf("Server -> Client %s now follow the tag %s\n", receiver, sender);
         } else {
             User receiverUser = data.users.get(Domain.removeDomain(receiver));
 

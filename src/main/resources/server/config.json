@@ -1,0 +1,71 @@
+{
+  "serverConfig": {
+    "currentDomain": {
+      "host": "server1.godswila.guru",
+      "base64AES": "/A5eJOFt/TTgoMUxqTQnfT+HGaYCwwNuLPFHzPGQCmI="
+    },
+    "multicastData": {
+      "multicastAddress": "224.1.1.255",
+      "multicastPort": 23303,
+      "networkInterface": "lo"
+    },
+    "unicastPort": 23303,
+    "relayPort": 23304,
+    "saltSizeInBytes": 0,
+    "tls": false
+  },
+  "serverData": {
+    "users": [
+      {
+        "login": "isnow",
+        "cryptData": {
+          "bcryptHash": "OmgYcYtuaHNzVLSuF4hepq.gTE4b/8q",
+          "bcryptRound": 14,
+          "bcryptSalt": "yPuP.sJg3jWGdAQ0c8eY3."
+        },
+        "followers": [
+          "anath4n@server1.godswila.guru"
+        ],
+        "userTags": [],
+        "lockoutCounter": 0
+      },
+      {
+        "login": "cloclo",
+        "cryptData": {
+          "bcryptHash": "R/I7e8GD74QnHUh.lJ41X9ZmcYDcTfm",
+          "bcryptRound": 14,
+          "bcryptSalt": "o6nCNG1FITih3Iont5ERBe"
+        },
+        "followers": [],
+        "userTags": [
+          "#helmo@server1.godswila.guru"
+        ],
+        "lockoutCounter": 0
+      },
+      {
+        "login": "anath4n",
+        "cryptData": {
+          "bcryptHash": "8kbpy3QxeoLcg64gors1hvB8qjfHdJe",
+          "bcryptRound": 14,
+          "bcryptSalt": "CzNDLM.hC7UK7sCY3deGhu"
+        },
+        "followers": [
+          "isnow@server1.godswila.guru"
+        ],
+        "userTags": [
+          "#helmo@server1.godswila.guru"
+        ],
+        "lockoutCounter": 0
+      }
+    ],
+    "tags": [
+      {
+        "tag": "#helmo",
+        "followers": [
+          "cloclo@server1.godswila.guru",
+          "anath4n@server1.godswila.guru"
+        ]
+      }
+    ]
+  }
+}

@@ -32,7 +32,7 @@ public class Relay extends Thread {
 
     public void handleRequest(Request request) {
         if (!RequestPattern.IN_RELAY.matcher(request.getRequestString()).matches()) {
-            System.out.printf("Relay -> Wrong request format\n");
+            System.out.println("Relay -> Wrong request format");
             return;
         }
 
@@ -45,7 +45,7 @@ public class Relay extends Thread {
     }
 
     public void handleSend(Request request) {
-        System.out.printf("Relay -> Send received\n");
+        System.out.println("Relay -> Send received");
 
         String senderDomain = Domain.getDomain(request.getParam(3));
         sendAckToSender(senderDomain, request.getRequestString());
@@ -129,7 +129,6 @@ public class Relay extends Thread {
     }
 
     public static void main(String[] args) {
-        new Relay().start();
-        new JsonRepository().save(new Relay());
+        new JsonRepository().loadRelay().start();
     }
 }
